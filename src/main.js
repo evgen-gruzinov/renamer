@@ -8,6 +8,7 @@ const {app, BrowserWindow, Menu} = electron;
 let mainWindow;
 let helpWindow;
 
+// Start application
 app.on('ready', function () {
     mainWindow = new BrowserWindow({
         resizable: false,
@@ -33,6 +34,7 @@ app.on('ready', function () {
     Menu.setApplicationMenu(mainMenu)
 });
 
+// Opening help window
 function openHelp() {
     helpWindow = new BrowserWindow({
         resizable: false,
@@ -46,6 +48,7 @@ function openHelp() {
     }));
 }
 
+// Create basic menu template
 const mainMenuTemplate = [
     {
         label: 'App',
@@ -62,7 +65,8 @@ const mainMenuTemplate = [
             {
                 label: 'Quit',
                 accelerator: 'CmdOrCtrl+Q',
-                click: function () {
+                // Quit app when click
+                click() {
                     app.quit()
                 }
             }
@@ -70,6 +74,7 @@ const mainMenuTemplate = [
     }
 ];
 
+// Add development block in menu if app is not in production
 if (process.env.NODEJS_ENV !== 'production') {
     mainMenuTemplate.push({
         label: 'Dev Tools',
@@ -77,6 +82,7 @@ if (process.env.NODEJS_ENV !== 'production') {
             {
                 label: 'DevTool',
                 accelerator: 'CmdOrCtrl+D',
+                // Toggle Chrome DevTools when click
                 click(item, focusedWindow){
                     focusedWindow.toggleDevTools()
                 }
