@@ -3,7 +3,7 @@
   "productName": "Renamer",
   "version": "0.5.0",
   "description": "Renamer app",
-  "main": "src/main.js",
+  "main": "src/js/main.js",
   "scripts": {
     "start": "electron .",
     "test": "./node_modules/.bin/mocha",
