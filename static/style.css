@@ -1,0 +1,76 @@
+@font-face {
+    src: url("fonts/PT_Serif-Web-Regular.ttf");
+    font-family: 'PT Serif';
+}
+
+@font-face {
+    src: url("fonts/BrutalType-Medium.woff");
+    font-family: 'Brutal Type';
+}
+
+
+
+body {
+    margin: 0;
+    font-family: 'PT Serif', serif;
+}
+footer {
+    background: #1763A6;
+    /*bottom: 0;*/
+    color: #fff;
+    font-size: 12pt;
+    font-weight: bolder;
+    margin-top: 8pt;
+    padding: 5pt 0;
+    /*position: absolute;*/
+    text-align: center;
+    /*width: 100%;*/
+}
+h3 {
+    font-family: 'Brutal Type', sans-serif;
+}
+h3, input {
+    margin: 5pt 25pt 5pt 0;
+}
+
+.work_block {
+    margin: 25pt auto;
+    width: 98%;
+}
+
+#symbols_count {
+    width: 15pt;
+    text-align: center;
+}
+
+#selected_files {
+    list-style: none;
+    padding: 0;
+}
+
+hr {
+    border: 1pt solid #bfbfbf;
+}
+
+.results{
+    background: #e0e0e0;
+    border: 2pt solid #bfbfbf;
+    border-radius: 2pt;
+    margin: 0 5%;
+    min-height: 50pt;
+    text-align: center;
+    width: 90%;
+}
+.results h4 {
+    font-size: 14pt;
+    margin: 2pt 0;
+}
+.results ul {
+    margin: 0;
+}
+#files_counter {
+    display: block;
+    margin: 5pt 0;
+    text-align: center;
+    width: 100%;
+}
