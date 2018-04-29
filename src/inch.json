@@ -1,7 +1,8 @@
 {
   "files": {
     "included": [
-      "*.js"
+      "*.js",
+      "**/*.js"
     ],
     "excluded": [
       "plugins/vendor/sparkr/sparkr.js",

@@ -58,7 +58,8 @@ const mainMenuTemplate = [
             },
             {
                 label: 'Help',
-                click: function () {
+                // Opening help window when click
+                click() {
                     openHelp()
                 }
             },
