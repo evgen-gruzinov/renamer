@@ -3,13 +3,13 @@
   "productName": "Renamer",
   "version": "0.5.0",
   "description": "Renamer app",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "test": "./node_modules/.bin/mocha",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=builds",
-    "package-win": "electron-packager . renamer --overwrite --asar --platform=win32 --prune=true --out=builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Renamer\"",
-    "package-linux": "electron-packager . renamer --overwrite --asar --platform=linux --arch=x64 --prune=true --out=builds"
+    "build-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=builds",
+    "build-win": "electron-packager . renamer --overwrite --asar --platform=win32 --prune=true --out=builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Renamer\"",
+    "build-linux": "electron-packager . renamer --overwrite --asar --platform=linux --arch=x64 --prune=true --out=builds"
   },
   "author": "Evgen Gruzinov",
   "license": "MIT",

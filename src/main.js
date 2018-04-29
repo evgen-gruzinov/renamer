@@ -15,7 +15,7 @@ app.on('ready', function () {
         width: 1000
     });
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'mainWindow.html'),
+        pathname: path.join(__dirname, '/pages/mainWindow.html'),
         protocol: 'file:',
         slashes: true
     }));
@@ -40,7 +40,7 @@ function openHelp() {
         height:750
     });
     helpWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'helpWindow.html'),
+        pathname: path.join(__dirname, '/pages/helpWindow.html'),
         protocol: 'file:',
         slashes: true
     }));
