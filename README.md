@@ -13,5 +13,5 @@ Simplest way - download ready builds in [Releases](https://github.com/evgen-gruz
 - **[jQuery](http://jquery.com/)** - Some scripts
 - **[Gulp](https://gulpjs.com/)** - Building css and program
 
-##License 
+## License 
 This project is licensed under the MIT License - see the **[LICENSE.md](https://github.com/evgen-gruzinov/renamer/blob/master/LICENSE)** file for details
