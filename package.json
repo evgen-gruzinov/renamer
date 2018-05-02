@@ -1,15 +1,19 @@
 {
   "name": "renamer",
   "productName": "Renamer",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Renamer app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evgen-gruzinov/renamer.git"
+  },
   "main": "src/js/main.js",
   "scripts": {
     "start": "electron .",
     "test": "./node_modules/.bin/mocha",
-    "build-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=builds",
-    "build-win": "electron-packager . renamer --overwrite --asar --platform=win32 --prune=true --out=builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Renamer\"",
-    "build-linux": "electron-packager . renamer --overwrite --asar --platform=linux --arch=x64 --prune=true --out=builds"
+    "build-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=src/icons/mac.icns --prune=true --out=builds",
+    "build-win": "gulp set-prod && electron-packager . renamer --overwrite --icon=src/icons/win.ico --asar --platform=win32 --prune=true --out=builds && gulp set-dev",
+    "build-linux": "gulp set-prod && electron-packager . renamer --overwrite --asar --platform=linux --arch=x64 --prune=true --out=builds && gulp set-dev"
   },
   "author": "Evgen Gruzinov",
   "license": "MIT",
@@ -17,11 +21,18 @@
     "electron": "^2.0.0-beta.7",
     "jquery": "^3.3.1",
     "npm": "^6.0.0",
-    "selenium-webdriver": "^4.0.0-alpha.1",
-    "spectron": "^3.8.0"
+    "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "devDependencies": {
     "electron-packager": "^12.0.1",
-    "mocha": "^5.1.1"
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-insert": "^0.5.0",
+    "gulp-remove-files": "0.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "mocha": "^5.1.1",
+    "spectron": "^3.8.0"
   }
 }

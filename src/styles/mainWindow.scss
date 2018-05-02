@@ -1,55 +1,40 @@
-@font-face {
-  src: url("fonts/PT_Serif-Web-Regular.ttf");
-  font-family: 'PT Serif'; }
-
-@font-face {
-  src: url("fonts/BrutalType-Medium.woff");
-  font-family: 'Brutal Type'; }
-
-html, body {
-  height: 100%; }
-
-body {
-  margin: 0;
-  font-family: 'PT Serif', serif; }
-
-footer {
-  align-items: center;
-  background: #34495e;
-  color: #fff;
+@mixin flex-align($justify_content) {
   display: flex;
-  font-size: 12pt;
-  font-weight: bolder;
-  justify-content: center;
-  height: 5%; }
+  justify-content: $justify_content;
+  align-items: center;
+}
+
 
 #program_wrapper {
   display: flex;
   height: 95%;
-  width: 100%; }
+  width: 100%;
+}
 
 #side_menu {
   border-right: #696969 solid 2pt;
   height: 100%;
   width: 35%;
-  flex-direction: column; }
+  flex-direction: column;
+}
 
 h3 {
   font-family: 'Brutal Type', sans-serif;
   font-size: 16pt;
   margin: 5pt;
-  text-align: center; }
+  text-align: center;
+}
 
 .blocks_hr {
-  border: 1.5pt solid; }
+  border: 1.5pt solid;
+}
 
 #files_selector_form {
   font-family: 'Brutal Type', sans-serif;
   height: 10%;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center; }
+  @include flex-align(space-around);
+}
 
 #selector_files {
   width: 0.1px;
@@ -57,7 +42,8 @@ h3 {
   opacity: 0;
   overflow: hidden;
   position: absolute;
-  z-index: -1; }
+  z-index: -1;
+}
 
 #selector_files + label {
   background-color: #2d98da;
@@ -69,11 +55,12 @@ h3 {
   font-weight: bold;
   width: 65%;
   height: 85%;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  #selector_files + label:hover {
-    background: #2e86de; }
+  @include flex-align(center);
+
+  &:hover {
+    background: #2e86de;
+  }
+}
 
 #selected_files_clear {
   background: #eb2f06;
@@ -85,15 +72,15 @@ h3 {
   font-weight: bolder;
   width: 25%;
   height: 85%;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  #selected_files_clear:hover {
-    background: #d52c06; }
+  @include flex-align(center);
+  &:hover {
+    background: #d52c06;
+  }
+}
 
 .rename_input {
-  margin: 10pt 15pt; }
-  .rename_input input {
+  margin: 10pt 15pt;
+  input {
     border: 1pt solid #fff;
     background: #fcfff4;
     box-shadow: inset 0 1px 1px white, 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -102,18 +89,21 @@ h3 {
     height: 15pt;
     text-align: center;
     padding: 0;
-    width: 25pt; }
-  .rename_input label {
+    width: 25pt;
+  }
+  label {
     font-weight: bold;
     margin: 5pt;
-    width: 150pt; }
+    width: 150pt;
+  }
+}
 
 .rename_checkbox {
   width: 125pt;
   position: relative;
   margin: 27.5pt 15pt;
-  height: 1pt; }
-  .rename_checkbox label {
+  height: 1pt;
+  label {
     width: 15pt;
     height: 15pt;
     cursor: pointer;
@@ -122,8 +112,8 @@ h3 {
     left: 0;
     background: #fcfff4;
     border-radius: 4px;
-    box-shadow: inset 0 1px 1px white, 0 1px 3px rgba(0, 0, 0, 0.5); }
-    .rename_checkbox label:after {
+    box-shadow: inset 0 1px 1px white, 0 1px 3px rgba(0,0,0,0.5);
+    &:after {
       content: '';
       width: 9px;
       height: 5px;
@@ -135,23 +125,28 @@ h3 {
       border-right: none;
       background: transparent;
       opacity: 0;
-      -webkit-transform: rotate(-45deg);
-              transform: rotate(-45deg); }
-    .rename_checkbox label:hover::after {
-      opacity: 0.5; }
-  .rename_checkbox input[type=checkbox] {
-    visibility: hidden; }
-    .rename_checkbox input[type=checkbox]:checked + label:after {
-      opacity: 1; }
-  .rename_checkbox h4 {
+      transform: rotate(-45deg);
+    }
+    &:hover::after {
+      opacity: 0.5;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }
+
+  h4 {
     margin: 25pt;
-    width: 150pt; }
+    width: 150pt;
+  }
+}
 
 #starting_block {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
+  @include flex-align(center);
+}
 #rename_button {
   background: #2d98da;
   border-radius: 2pt;
@@ -162,24 +157,34 @@ h3 {
   font-weight: bold;
   height: 35pt;
   margin: 5pt;
-  width: 70%; }
+  width: 70%;
+}
 
 #files_list {
   display: inline-block;
   height: 100%;
   font-size: 13pt;
   text-align: center;
-  width: 65%; }
-  #files_list table {
-    width: 100%; }
+  width: 65%;
+
+  table {
+    width: 100%;
+  }
+}
 
 .table_old_name, .table_new_name {
-  width: 50%; }
-
+  width: 50%;
+}
 .informer {
   font-weight: bold;
   font-family: 'Brutal Type', sans-serif;
-  font-size: 14pt; }
+  font-size: 14pt;
+}
+
+
+
+
+
 
 /*
 .rename_checkbox {
@@ -223,6 +228,7 @@ h3 {
   }
 }
 */
+
 /*
 
 h3 {

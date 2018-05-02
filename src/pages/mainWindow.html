@@ -5,40 +5,66 @@
     <link rel="stylesheet" href="../style.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
 <body>
-    <div class="work_block">
-        <h3>Select files to rename</h3>
-        <form id="select_form">
-            <input type="file" id="selector_files" multiple><br>
-            <button id="selected_files_clear">Clear selected files</button>
-        </form>
-    </div>
-    <div class="work_block">
-        <h3>Select renaming settings</h3>
-        <form id="rename_settings">
-            <label for="symbols_count">Symbols count: </label>
-            <input id="symbols_count" type="text" value="10">
-            <label for="checkbox_uppercase_letters">Upper-case letters: </label>
-            <input id="checkbox_uppercase_letters" type="checkbox" checked>
-            <label for="checkbox_lowcase_letters">Low-case letters: </label>
-            <input id="checkbox_lowcase_letters" type="checkbox" checked>
-            <label for="checkbox_numbers">Numbers: </label>
-            <input id="checkbox_numbers" type="checkbox" checked>
-            <label for="checkbox_symbols">Symbols: </label>
-            <input id="checkbox_symbols" type="checkbox" >
-            <hr>
-            <label for="delete_source">Delete source file? </label>
-            <input id="delete_source" type="checkbox" >
-        </form>
-    </div>
-    <div class="work_block">
-        <h3>Check results and start</h3>
-        <div class="results">
-            <label for="selected_files"><h4>Results: </h4></label>
-            <ul id="selected_files"></ul>
+    <div id="program_wrapper">
+        <div id="side_menu">
+            <h3>Select files to rename</h3>
+            <form id="files_selector_form">
+                <input type="file" id="selector_files" multiple>
+                <label for="selector_files">Select files</label>
+                <button id="selected_files_clear">Clear</button>
+            </form>
+            <hr class="blocks_hr">
+            <h3>Select renaming settings</h3>
+            <form id="rename_settings">
+
+                <div class="rename_input">
+                    <input type="number" value="10" id="symbols_count" name="symbols_count" checked />
+                    <label for="symbols_count">Symbols count</label>
+                </div>
+
+                <div class="rename_checkbox">
+                    <h4>Upper-case letters</h4>
+                    <input type="checkbox" value="None" id="checkbox_uppercase_letters" name="check" checked />
+                    <label for="checkbox_uppercase_letters"></label>
+                </div>
+
+                <div class="rename_checkbox">
+                    <h4>Low-case letters</h4>
+                    <input type="checkbox" value="None" id="checkbox_lowcase_letters" name="checkbox_lowercase_letters" checked />
+                    <label for="checkbox_lowcase_letters"></label>
+                </div>
+                <div class="rename_checkbox">
+                    <h4>Numbers</h4>
+                    <input type="checkbox" value="None" id="checkbox_numbers" name="check" checked />
+                    <label for="checkbox_numbers"></label>
+                </div>
+                <div class="rename_checkbox">
+                    <h4>Symbols</h4>
+                    <input type="checkbox" value="None" id="checkbox_symbols" name="checkbox_symbols" />
+                    <label for="checkbox_symbols"></label>
+
+                </div>
+                <div class="rename_checkbox">
+                    <h4>Delete source files?</h4>
+                    <input type="checkbox" value="None" id="delete_source" name="delete_source" />
+                    <label for="delete_source"></label>
+                </div>
+            </form>
+            <hr class="blocks_hr">
+            <div id="starting_block">
+                <button id="rename_button">Rename</button>
+            </div>
         </div>
-        <b id="files_counter">Count of files: <b id="files_count">0</b></b>
-        <button id="rename_button">Rename</button>
-     </div>
+
+        <div id="files_list">
+            <table>
+                <tr>
+                    <td class="table_old_name informer">Old file name</td>
+                    <td class="table_new_name informer">New file name</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <footer>Copyright &copy; 2018,  Evgen Gruzinov</footer>
 </body>

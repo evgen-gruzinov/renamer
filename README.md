@@ -6,6 +6,12 @@ The small program, which is helps you to fast rename your files.
 [![devDependencies Status](https://david-dm.org/evgen-gruzinov/renamer/dev-status.svg)](https://david-dm.org/evgen-gruzinov/renamer?type=dev)
 [![Inline docs](http://inch-ci.org/github/evgen-gruzinov/renamer.svg?branch=master)](http://inch-ci.org/github/evgen-gruzinov/renamer)
 ## Getting started
-For now project in alpha version, so i provide build later.
+Simplest way - download ready builds in [Releases](https://github.com/evgen-gruzinov/renamer/releases).
 
-Made by Electron
+## Used frameworks and libraries
+- **[Electron](https://electronjs.org/)** - Main framework
+- **[jQuery](http://jquery.com/)** - Some scripts
+- **[Gulp](https://gulpjs.com/)** - Building css and program
+
+##License 
+This project is licensed under the MIT License - see the **[LICENSE.md](https://github.com/evgen-gruzinov/renamer/blob/master/LICENSE)** file for details
