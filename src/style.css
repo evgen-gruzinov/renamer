@@ -60,10 +60,9 @@ h3 {
   z-index: -1; }
 
 #selector_files + label {
-  background-color: #2d98da;
-  border: 2pt solid #034a95;
+  border: 2pt solid #044476;
   border-radius: 2pt;
-  color: #ffffff;
+  color: #333333;
   cursor: pointer;
   font-size: 16pt;
   font-weight: bold;
@@ -71,14 +70,19 @@ h3 {
   height: 85%;
   display: flex;
   justify-content: center;
-  align-items: center; }
-  #selector_files + label:hover {
-    background: #2e86de; }
+  align-items: center;
+}
+#selector_files + label:hover {
+  background: #044476;
+  color: #fefefe;
+
+}
 
 #selected_files_clear {
   background: #eb2f06;
   border: 2pt solid #912724;
   border-radius: 2pt;
+  box-sizing: content-box;
   color: #F3F3F3;
   cursor: pointer;
   font-size: 16pt;
@@ -88,8 +92,9 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center; }
-  #selected_files_clear:hover {
-    background: #d52c06; }
+#selected_files_clear:hover {
+  background: #d52c06;
+}
 
 .rename_input {
   margin: 10pt 15pt; }
@@ -153,21 +158,27 @@ h3 {
   align-items: center; }
 
 #rename_button {
-  background: #2d98da;
   border-radius: 2pt;
-  border: 2pt solid #034a95;
-  color: #f5f5f5;
+  border: 2pt solid #044476;
+  background: #ffffff;
+  color: #333333;
   cursor: pointer;
   font-size: 16pt;
   font-weight: bold;
   height: 35pt;
   margin: 5pt;
-  width: 70%; }
+  width: 70%;
+}
+#rename_button:hover {
+  color: #fefefe;
+  background: #044476;
+}
 
 #files_list {
   display: inline-block;
   height: 100%;
   font-size: 13pt;
+  overflow: auto;
   text-align: center;
   width: 65%; }
   #files_list table {

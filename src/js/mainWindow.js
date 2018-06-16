@@ -64,39 +64,56 @@ $('#files_selector_form').change(function (e) {
     input = document.querySelector('#selector_files');
     let need_file_length = $('#symbols_count').val();
     for (let n = 0; n < input.files.length; n++) {
+
         selected_files = input.files[n].name + '\r\n';
-        let file_json = {};
+        file_json = {};
         file_json.path = input.files[n].path;
         file_json.name = input.files[n].name;
 
-        let symbols_array = [];
-        if (document.getElementById("checkbox_uppercase_letters").checked) {
-            symbols_array = symbols_array.concat(randomize_letters_uppercase);
-        }
-        if (document.getElementById("checkbox_lowcase_letters").checked) {
-            symbols_array = symbols_array.concat(randomize_letters_lowcase);
-        }
-        if (document.getElementById("checkbox_numbers").checked) {
-            symbols_array = symbols_array.concat(randomize_num);
-        }
-        if (document.getElementById("checkbox_symbols").checked) {
-            symbols_array = symbols_array.concat(randomize_symbols);
-        }
-        symbols_count = symbols_array.length;
-        let file_new_name = '';
-        for (i = 1; i <= need_file_length; i++) {
-            symbol_int = Math.floor(Math.random() * (symbols_count));
-            file_new_name += symbols_array[symbol_int];
-        }
-        file_new_name += path.extname(file_json.path);
+        let Uncial = true;
 
-        file_json.new_name = file_new_name;
-        file_json_coded = JSON.stringify(file_json) + '\r\n';
-        fs.appendFile("temp/files.temp", file_json_coded, function(err) {
-            if(err) {
-                return console.log(err);
+        let data = fs.readFileSync('temp/files.temp');
+        let selected_list_files = data.toString().split('\r\n');
+        selected_list_files.forEach(function (element) {
+            if (element !== '') {
+                let existing_obj = JSON.parse(element);
+                let existing = existing_obj.path;
+                if (file_json.path === existing) {
+                    Uncial = false;
+                }
             }
         });
+
+        if (Uncial) {
+            let symbols_array = [];
+            if (document.getElementById("checkbox_uppercase_letters").checked) {
+                symbols_array = symbols_array.concat(randomize_letters_uppercase);
+            }
+            if (document.getElementById("checkbox_lowcase_letters").checked) {
+                symbols_array = symbols_array.concat(randomize_letters_lowcase);
+            }
+            if (document.getElementById("checkbox_numbers").checked) {
+                symbols_array = symbols_array.concat(randomize_num);
+            }
+            if (document.getElementById("checkbox_symbols").checked) {
+                symbols_array = symbols_array.concat(randomize_symbols);
+            }
+            symbols_count = symbols_array.length;
+            let file_new_name = '';
+            for (i = 1; i <= need_file_length; i++) {
+                symbol_int = Math.floor(Math.random() * (symbols_count));
+                file_new_name += symbols_array[symbol_int];
+            }
+            file_new_name += path.extname(file_json.path);
+
+            file_json.new_name = file_new_name;
+            file_json_coded = JSON.stringify(file_json) + '\r\n';
+            fs.appendFile("temp/files.temp", file_json_coded, function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+            });
+        }
     }
     document.getElementById("selector_files").value = "";
 
