@@ -13,7 +13,8 @@
     "test": "./node_modules/.bin/mocha",
     "build-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=src/icons/mac.icns --prune=true --out=builds",
     "build-win": "gulp set-prod && electron-packager . renamer --overwrite --icon=src/icons/win.ico --asar --platform=win32 --prune=true --out=builds && gulp set-dev",
-    "build-linux": "gulp set-prod && electron-packager . renamer --overwrite --asar --platform=linux --arch=x64 --prune=true --out=builds && gulp set-dev"
+    "build-linux": "gulp set-prod && electron-packager . renamer --overwrite --asar --platform=linux --arch=x64 --prune=true --out=builds && gulp set-dev",
+    "build-win-linux": "gulp set-prod && electron-packager . renamer --overwrite --icon=src/icons/win.ico --asar --platform=win32 --prune=true --out=builds && electron-packager . renamer --overwrite --asar --platform=linux --arch=x64 --prune=true --out=builds && gulp set-dev"
   },
   "author": "Evgen Gruzinov",
   "license": "MIT",

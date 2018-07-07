@@ -104,7 +104,14 @@ $('#files_selector_form').change(function (e) {
                 symbol_int = Math.floor(Math.random() * (symbols_count));
                 file_new_name += symbols_array[symbol_int];
             }
-            file_new_name += path.extname(file_json.path);
+
+            let file_ext = path.extname(file_json.path).toLowerCase();
+            if (file_ext.substr(1) === 'jpeg') {
+                file_ext = '.jpg';
+            }
+            alert(file_ext);
+            file_json.ext = file_ext.substr(1);
+            file_new_name += file_ext;
 
             file_json.new_name = file_new_name;
             file_json_coded = JSON.stringify(file_json) + '\r\n';
@@ -181,7 +188,7 @@ $('#rename_settings').change(function() {
                 symbol_int = Math.floor(Math.random() * (symbols_count));
                 file_new_name += symbols_array[symbol_int];
             }
-            file_new_name += path.extname(file_json.path);
+            file_new_name += '.' + file_json.ext;
             file_json.new_name = file_new_name;
             file_json_coded = JSON.stringify(file_json) + '\r\n';
             fs.appendFile("temp/files.temp", file_json_coded, function(err) {
@@ -211,9 +218,19 @@ $('#rename_button').click(function (e) {
         let decoded_string = JSON.parse(value);
         let file_old_name = decoded_string.name;
         let file_old_path = decoded_string.path;
+        let file_ext = decoded_string.ext;
         let file_new_name = decoded_string.new_name;
         path_leight = file_old_path.length - file_old_name.length;
-        let file_new_path = file_old_path.substr(0, path_leight) + file_new_name;
+        let file_new_path = file_old_path.substr(0, path_leight);
+        if (document.getElementById("ext_sorting").checked) {
+            file_new_path += file_ext + "\\";
+        }
+
+        if (!fs.existsSync(file_new_path)) {
+            fs.mkdirSync(file_new_path)
+        }
+
+        file_new_path += file_new_name;
         fs.copyFileSync(file_old_path, file_new_path);
 
         if (document.getElementById("delete_source").checked) {
