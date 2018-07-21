@@ -1,0 +1,18 @@
+@font-face {
+    src: url("../fonts/BrutalType-Medium.woff");
+    font-family: 'Brutal Type';
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+p {
+    margin: 30pt  0;
+    font-size: 16pt;
+    font-family: 'Brutal Type',sans-serif;
+}
+img {
+    height: 100pt;
+}

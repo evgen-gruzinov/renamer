@@ -1,5 +1,9 @@
+const electron = require('electron');
+const url = require('url');
 const fs = require('fs');
 const path = require('path');
+
+const BrowserWindow = electron.remote.BrowserWindow;
 
 const randomize_num = [
     '1','2','3','4','5',
@@ -109,7 +113,6 @@ $('#files_selector_form').change(function (e) {
             if (file_ext.substr(1) === 'jpeg') {
                 file_ext = '.jpg';
             }
-            alert(file_ext);
             file_json.ext = file_ext.substr(1);
             file_new_name += file_ext;
 
@@ -207,6 +210,19 @@ $('#rename_settings').change(function() {
 $('#rename_button').click(function (e) {
     e.preventDefault();
 
+    let processWindow = new BrowserWindow({
+        height: 150,
+        width: 400,
+        frame: false,
+        resizable: false,
+        center: true
+    });
+    processWindow.loadURL(url.format({
+        pathname: path.join(__dirname, '../pages/processWindow.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+
     let need_file_length = document.querySelector('#symbols_count').value;
     const data = fs.readFileSync('temp/files.temp');
 
@@ -231,10 +247,11 @@ $('#rename_button').click(function (e) {
         }
 
         file_new_path += file_new_name;
-        fs.copyFileSync(file_old_path, file_new_path);
 
-        if (document.getElementById("delete_source").checked) {
-            fs.unlinkSync(file_old_path);
+        if (document.getElementById("saveOriginal").checked) {
+            fs.copyFileSync(file_old_path, file_new_path);
+        } else {
+            fs.renameSync(file_old_path, file_new_path);
         }
     });
 
@@ -245,4 +262,6 @@ $('#rename_button').click(function (e) {
     });
     $('#files_list > table > tbody').html('<tr><td class="table_old_name informer">Old file name</td><td class="table_new_name informer">New file name</td></tr>');
     $('#files_selector_form').children('label').text('Select files');
+
+    processWindow.close();
 });
